@@ -1,0 +1,20 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if s:
+            if len(set(s))!=len(s):
+                max=1
+                for i in range(len(s)):
+                    num=s[i+1:].find(s[i])+1
+                    if num>max:
+                        max=num
+                return max
+            else:
+                max=len(s)
+                return max
+        else:
+             return 0 
+             
+'''
+地地道道的错误代码，本来if分支就排除了许多没想到的bug，比如输入‘’或者‘ ’，以及切片后没有考虑的字符等等。没想到还有bug，那我只能说这个算法暂时有点不高级
+算法的想法是从每个字符开始，将后面切片，返回切片后左数出现的第一个索引
+'''
