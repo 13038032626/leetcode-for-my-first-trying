@@ -1,0 +1,28 @@
+class Solution:
+    '''
+    def check(str):
+        new_ls=list(str).reverse()
+        new_str=''.join(new_ls)
+        if str==new_str:
+            return True
+        else:
+            return False
+    '''    
+    def longestPalindrome(self, s: str) -> str:
+        def check(str):
+            str1=str[:]
+            ls1=list(str)
+            ls1.reverse()
+            new_str=''.join(ls1)
+            if str1==new_str:
+                return True
+            else:
+                return False
+        num_list=[]
+        for i in range(len(s)):
+            for a in range(len(s)):
+                tem_s=s[i:1+a+1]
+                if check(tem_s):
+                    num_list.append(tem_s)
+        num_list.sort(key=lambda x:len(x),reverse=True)
+        return num_list[0]
