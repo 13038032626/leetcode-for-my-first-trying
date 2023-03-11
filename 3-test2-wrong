@@ -1,0 +1,28 @@
+class Solution {
+
+    public boolean check(String st){       //对于单个字符：ture  对于两个相同字符：false
+        for(int i=0;i<st.length();i++){
+            if(st.indexOf(st.charAt(i))!=i){
+                return false;
+            }
+            }
+        return true;
+        }
+    
+    public int lengthOfLongestSubstring(String s) {
+        int n=2;  //窗口长度
+        int max=1;
+        for(int i=0;i<s.length();i++){
+            try{
+            String subs=s.substring(i,i+n);
+            if(this.check(subs)){
+                max= subs.length();
+                n++;
+            }
+        }catch(Exception e){
+            continue;
+        }
+    }
+        return max;
+}
+}
